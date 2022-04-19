@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.top-in-category {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+img:focus {
+  outline: none;
+}
+.title {
+  font-size: medium;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+}

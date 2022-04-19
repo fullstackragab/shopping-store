@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.container .form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.title {
+  font-size: large;
+}
+.container h1 {
+  text-align: center;
+  margin: 15px auto;
+}
+.container .form-field {
+  margin-top: 10px;
+}
+.container .form .rememberme {
+  margin-top: 10px;
+}
+.signup {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.submit {
+  align-self: center;
+  margin-top: 30px;
+}
+.submit button {
+  width: 100px;
+}
+@media (min-width: 600px) {
+  .container {
+    width: 500px;
+  }
+  .container .form .form-field {
+    width: 300px;
+  }
+}
+@media (max-width: 599px) {
+  .container {
+    width: 100%;
+  }
+  .container .form {
+    width: 80%;
+  }
+  .container .form .form-field {
+    width: 100%;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="top-in-category" *ngFor='let topInCategory of topInCategoryArray'>
+    <div class="title">{{ topInCategory.title }} </div>
+    <div class="image">
+      <img [src]='topInCategory.imageUrl' [alt]='topInCategory.title' [routerLink]='topInCategory.url'>
+    </div>
+  </div>
+</div>

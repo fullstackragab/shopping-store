@@ -1,0 +1,9 @@
+<div class="container">
+  <div *ngIf='discount' class="discount">
+    <div [style.fontSize]='priceAfterDiscountFontSize'>${{ priceAfterDiscount | number : '1.2-2' }}</div>
+    <div class="list-price" [style.fontSize]='listPriceFontSize'>${{ listPrice | number : '1.2-2' }}</div>
+  </div>
+  <div *ngIf='!discount'>
+    <div [style.fontSize]='priceAfterDiscountFontSize'>${{ listPrice | number : '1.2-2' }}</div>
+  </div>
+</div>

@@ -1,0 +1,222 @@
+<div *ngIf="cartItemsCount === '0'" class="cart-empty">
+  <div class="cart-empty-title">Cart is empty!</div>
+</div>
+
+<div *ngIf="+cartItemsCount > 0 && !mobile" class="container-lg">
+
+  <div class="cart-title-lg">
+    Your cart: {{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }}
+  </div>
+
+  <div class="items-section-lg">
+
+    <div *ngFor='let item of cart.items' class="item-lg">
+
+      <div class="item-delete-lg">
+        <button type="button" mat-icon-button (click)='onDelete(item.productId)'>
+          <mat-icon class="item-delete-icon">close</mat-icon>
+        </button>
+      </div>
+
+      <div class="image-lg">
+        <img [src]='item.productImageUrl' [alt]='item.productName'
+          [routerLink]="'/product/' + getFriendlyName(item.productName)" [queryParams]="{ id: item.productId }">
+      </div>
+
+      <div class="name-lg" [routerLink]="'/product/' + getFriendlyName(item.productName)"
+        [queryParams]="{ id: item.productId }">
+        {{ item.productName | limit : 300 }}
+      </div>
+
+      <div class="item-unit-price-lg">
+        {{ '$' + item.productPriceAfterDiscount }}
+      </div>
+
+      <div class="controls-lg">
+
+        <div>
+          <button mat-icon-button (click)='onRemove(item.productId)' color='primary'>
+            <mat-icon class="control-icon" [inline]='true'>remove</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <input (input)='onChange(item.productId, $event)' matInput [value]='item.quantity' min='1'>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button mat-icon-button (click)="onAdd(item.productId, '1')" color='primary'>
+            <mat-icon class="control-icon" [inline]='true'>add</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="item-total-price-lg">
+        {{ '$' + (+item.productPriceAfterDiscount * +item.quantity).toString()}}
+      </div>
+
+      <div class="item-delivery-lg">
+        {{ +item.productDelivery > 0 ? '$' + item.productDelivery : 'Free'}}
+      </div>
+
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="summary-section">
+    <div></div>
+    <div class="text">Subtotal ({{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }})</div>
+    <div></div>
+    <div class="value">{{ '$' + cart.subtotal }}</div>
+    <div></div>
+
+    <div></div>
+    <div class="text">Delivery</div>
+    <div></div>
+    <div class="value">{{ +cart.deliveryTotal > 0 ? '$' + cart.deliveryTotal : 'Free' }}</div>
+    <div></div>
+
+    <div></div>
+    <div class="text">
+      <div>Taxes & Fees</div>
+      <div class="tax-note-lg">
+        (Calculated in checkout)
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+    <div class="tax-value">--</div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="total-section">
+    <div></div>
+    <div class="total-text">Total</div>
+    <div></div>
+    <div class="total-value">{{ '$' + cart.total }}</div>
+    <div></div>
+  </div>
+
+  <div class="action-section">
+    <div></div>
+    <button type="button" class="button-lg" color='primary' mat-raised-button>
+      <mat-icon class="icon">checkout</mat-icon>Checkout
+    </button>
+  </div>
+</div>
+
+
+
+<div *ngIf="+cartItemsCount > 0 && mobile" class="container">
+
+  <div class="cart-title">
+    Your cart: {{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }}
+  </div>
+
+  <div class="items">
+    <div *ngFor='let item of cart.items' class="item">
+
+      <div class="first-line">
+        <div class="image">
+          <img [src]='item.productImageUrl' [alt]='item.productName'
+            [routerLink]="'/product/' + getFriendlyName(item.productName)" [queryParams]="{ id: item.productId }">
+        </div>
+
+        <div>
+          <div class="name" [routerLink]="'/product/' + getFriendlyName(item.productName)"
+            [queryParams]="{ id: item.productId }">
+            {{ item.productName | limit }}
+          </div>
+        </div>
+
+        <div class="price">
+          {{ '$' + item.productPriceAfterDiscount }}
+        </div>
+      </div>
+
+
+      <div class="second-line">
+
+        <div class="controls">
+
+          <div>
+            <button type="button" mat-icon-button (click)='onRemove(item.productId)' color='primary'>
+              <mat-icon class="control-icon">remove</mat-icon>
+            </button>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput (input)='onChange(item.productId, $event)' [value]='item.quantity' min='1'>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button type="button" mat-icon-button (click)="onAdd(item.productId, '1')" color='primary'>
+              <mat-icon class="control-icon">add</mat-icon>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="delete">
+          <div>
+            <button mat-button (click)='onDelete(item.productId)'>
+              <mat-icon class="item-delete-icon">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+
+  <div class="cart-total">
+
+    <div class="subtotal">
+      <div class="text">Subtotal ({{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }})</div>
+      <div class="value">{{ '$' + cart.subtotal }}</div>
+    </div>
+
+    <div class="delivery">
+      <div class="text">Delivery</div>
+      <div class="value">{{ +cart.deliveryTotal > 0 ? '$' + cart.deliveryTotal : 'Free' }}</div>
+    </div>
+
+    <div class="tax">
+      <div class="text">
+        <div>Taxes & Fees</div>
+        <div class="tax-note">(Calculated in checkout)</div>
+      </div>
+      <div class="tax-value">--</div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="total">
+      <div class="text">Total ({{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }})</div>
+      <div class="total-value">{{ '$' + cart.total }}</div>
+    </div>
+
+    <div class="checkout">
+      <button type="button" class="button" mat-raised-button color='primary' routerLink='/checkout'>
+        <mat-icon class="icon">checkout</mat-icon>Checkout
+      </button>
+    </div>
+
+  </div>
+
+
+
+</div>

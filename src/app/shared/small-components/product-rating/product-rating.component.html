@@ -1,0 +1,6 @@
+<div class="container" [title]="'Rating ' + originalRating">
+  <mat-icon *ngFor=' let i of fillArray'>star</mat-icon>
+  <mat-icon *ngIf='half'>star_half</mat-icon>
+  <mat-icon *ngFor='let i of emptyArray'>star_border</mat-icon>
+  <div class="reviews" *ngIf="numberOfRatings !== '0'">{{ '' + numberOfRatings }}</div>
+</div>

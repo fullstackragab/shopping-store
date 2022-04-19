@@ -1,0 +1,91 @@
+<div *ngIf='product' class="container">
+
+  <div class="back">
+    <button type="button" (click)='onBack()' mat-flat-button class="back-button">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+
+
+  <div class="first-line">
+    <mat-icon>checkout</mat-icon>
+    <div class="quantity">You just added {{ quantity }} {{ quantity === '1' ? ' item' : ' items' }}</div>
+    <div routerLink='/cart' class="cart-items-count">
+      (<div class='cart-items-count-decoration'>{{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : '
+        items' }} in cart</div>)
+    </div>
+  </div>
+
+
+
+  <div *ngIf='mobile' class="go-to-cart">
+    <mat-divider></mat-divider>
+    <button class="go-to-cart-button" mat-raised-button color='primary' type="button" routerLink='/cart'>Go to
+      cart</button>
+  </div>
+
+
+
+  <div *ngIf='!mobile' class="main">
+    <div class="first-column">
+      <div class="image">
+        <img [src]='product.imageUrl' [alt]='product.name' [routerLink]="['/product/' + getFriendlyName()]"
+          [queryParams]="{ id: productId }">
+      </div>
+      <div class="name" [routerLink]="['/product' + getFriendlyName()]" [queryParams]="{ id: productId }">
+        {{ product.name | limit : 500}}
+      </div>
+      <div class="content">
+        <div class="price">
+          {{ '$' + productPriceAfterDiscount }}
+        </div>
+        <div class="quantity">
+          Qty {{ quantity }}
+        </div>
+      </div>
+    </div>
+
+
+    <mat-divider class="first-divider" [vertical]='true'></mat-divider>
+
+
+    <div class="second-column">
+
+      <div class="subtotal">
+        <div class="text">Subtotal ({{ cartItemsCount }} {{ cartItemsCount === '1' ? ' item' : ' items' }})</div>
+        <div class="value">{{ '$' + subtotal }}</div>
+      </div>
+      <div class="delivery">
+        <div class="text">Delivery</div>
+        <div class="value">{{ deliveryTotal === '0' ? 'Free' : '$' + deliveryTotal }}</div>
+      </div>
+      <div class="tax">
+        <div class="tax-text">
+          <div>Taxes & Fees</div>
+          <div class="tax-sub">(Calculated in checkout)</div>
+        </div>
+        <div class="tax-value">--</div>
+      </div>
+      <mat-divider class="second-divider"></mat-divider>
+      <div class="total">
+        <div class="total-text">Total</div>
+        <div class="total-value">{{ '$' + total }}</div>
+      </div>
+    </div>
+
+
+    <div class="third-column">
+      <div class="view-cart">
+        <button type="button" class="view-cart-button" mat-stroked-button color='primary' routerLink='/cart'>View
+          Cart</button>
+      </div>
+      <div class="checkout">
+        <button class="checkout-button" color='primary' mat-raised-button type="button"
+          routerLink='/checkout'>Checkout</button>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

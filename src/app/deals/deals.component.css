@@ -1,0 +1,101 @@
+:host {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  width: 100%;
+  display: contents;
+  max-width: 100%;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100vw;
+  cursor: pointer;
+}
+
+img:focus {
+  outline: none;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  transition: left 500ms;
+}
+
+.slides {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: left 500ms;
+  left: 0px;
+}
+
+.slide {
+  min-width: 100vw;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.left {
+  align-self: center;
+  position: absolute;
+  left: 0px;
+  padding: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: var(--accent-color);
+  text-shadow: 2px 0px white;
+  z-index: 100;
+}
+.left:hover {
+  opacity: 1;
+}
+
+.right {
+  align-self: center;
+  position: absolute;
+  left: calc(100vw - 60px);
+  padding: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: var(--accent-color);
+  text-shadow: -2px 0px white;
+  z-index: 100;
+}
+.right:hover {
+  opacity: 1;
+}
+
+@media (min-width: 1024px) {
+  .left {
+    padding: 20px;
+  }
+  .right {
+    left: calc(100vw - 90px);
+    padding: 30px;
+  }
+}

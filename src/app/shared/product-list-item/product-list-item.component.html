@@ -1,0 +1,59 @@
+<div *ngIf='product' class="container">
+
+  <div class="first-column">
+    <div class="image">
+      <img [src]='product.imageUrl' [alt]='product.name' (click)='onClick()'>
+    </div>
+  </div>
+
+  <div class="second-column">
+    <div class="top">
+      <app-product-best-seller *ngIf='productBestSeller'></app-product-best-seller>
+      <app-product-new *ngIf='productNew' class='product-new'></app-product-new>
+    </div>
+    <div class="name" (click)='onClick()'>
+      {{ product.name | limit : 300 }}
+
+    </div>
+    <div class="rating">
+      <app-product-rating *ngIf="rating !== '0'" [rating]='rating' [numberOfRatings]='numberOfRatings'>
+      </app-product-rating>
+    </div>
+    <div *ngIf='mobile' class='content'>
+      <div *ngIf='+productDiscount > 0' class='discount'>
+
+        <app-product-discount [discount]='productDiscount'></app-product-discount>
+
+
+      </div>
+
+      <div class='price'>
+
+        <app-product-price [listPrice]='product.price' [priceAfterDiscount]='priceAfterDiscount'></app-product-price>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div *ngIf='!mobile' class='third-column'>
+
+    <div *ngIf='+productDiscount > 0' class='discount'>
+
+      <app-product-discount [discount]='productDiscount'></app-product-discount>
+
+
+    </div>
+
+    <div class='price'>
+
+      <app-product-price [listPrice]='product.price' [priceAfterDiscount]='priceAfterDiscount'></app-product-price>
+
+    </div>
+
+  </div>
+
+
+</div>

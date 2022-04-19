@@ -1,0 +1,143 @@
+<div *ngIf='product' class="container">
+  <div *ngIf='!mobile' class="large-display">
+
+    <div class="first-column-lg">
+
+      <div class="images-lg">
+        <div class="image-container-lg" *ngFor='let productImage of productImages; let i = index' #imgContainer>
+          <img [src]='productImage' (click)='onImageClick(i, productImage)'>
+        </div>
+      </div>
+
+    </div>
+    <div class="second-column-lg">
+
+      <div class="image-lg">
+
+        <img [src]='product.imageUrl' [alt]='product.name' #mainImage>
+
+      </div>
+
+    </div>
+    <div class="third-column-lg">
+      <div *ngIf="brand !== ''" class="brand-lg">{{ brand }}</div>
+
+      <div class="name-lg">{{ product.name | limit : 200 }}</div>
+      <div class="rating-lg">
+        <app-product-rating *ngIf="rating !== '0'" [rating]='rating' [numberOfRatings]='numberOfRatings'>
+        </app-product-rating>
+      </div>
+      <div class="tags-lg">
+        <app-product-best-seller *ngIf='productBestSeller' fontSize='small'></app-product-best-seller>
+        <app-product-new class="product-new-tag-lg" *ngIf='productNew' fontSize='small'></app-product-new>
+      </div>
+      <div class="stock-lg">
+        <app-product-stock [stock]='stock'></app-product-stock>
+      </div>
+      <div class="delivery-lg">
+        <div *ngIf="delivery === '0' && +stock > 0">Free Delivery</div>
+      </div>
+      <div class="discount-lg" *ngIf='+stock > 0'>
+        <app-product-discount [discount]='discount' fontSize='small'></app-product-discount>
+      </div>
+      <div class="price-lg">
+        <app-product-price priceAfterDiscountFontSize='1.7rem' [listPrice]='product.price'
+          [priceAfterDiscount]='priceAfterDiscount'></app-product-price>
+      </div>
+      <div class="action-lg">
+        <mat-form-field class="form-field">
+          <mat-label>Quantity</mat-label>
+          <mat-select [disabled]="+stock === 0" [(value)]='+selectedQuantity'>
+            <mat-option *ngFor='let item of count' [value]='item'>
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button type="button" [disabled]='+stock === 0' class="button" mat-raised-button color='primary'
+          (click)='addToCart()'>Add to Cart</button>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div *ngIf='mobile' class="small-display">
+    <div class="top">
+      <div class="tags">
+        <app-product-best-seller *ngIf='productBestSeller'></app-product-best-seller>
+        <app-product-new class="product-new" *ngIf='productNew'></app-product-new>
+      </div>
+    </div>
+    <div class="name">{{ product.name | limit : 110 }}</div>
+    <div class="image">
+      <img [src]='product.imageUrl' [alt]='product.name' #mainImage>
+    </div>
+    <div class="images">
+      <div class="image-container" *ngFor='let productImage of productImages; let i = index' #imgContainer>
+        <img [src]='productImage' (click)='onImageClick(i, productImage)'>
+      </div>
+    </div>
+    <div class="rating">
+      <app-product-rating *ngIf="rating !== '0'" [rating]='rating' [numberOfRatings]='numberOfRatings'>
+      </app-product-rating>
+    </div>
+    <div class="stock">
+      <app-product-stock [stock]='stock'></app-product-stock>
+    </div>
+    <div class="delivery">
+      <div *ngIf="delivery === '0' && +stock > 0">Free Delivery</div>
+    </div>
+    <div class="discount" *ngIf='+stock > 0'>
+      <app-product-discount [discount]='discount' fontSize='small'></app-product-discount>
+    </div>
+    <div class="price">
+      <app-product-price priceAfterDiscountFontSize='1.7rem' [listPrice]='product.price'
+        [priceAfterDiscount]='priceAfterDiscount'></app-product-price>
+    </div>
+    <div class="action">
+      <mat-form-field class="form-field">
+        <mat-label>Quantity</mat-label>
+        <mat-select [disabled]="+stock === 0" [(value)]='+selectedQuantity'>
+          <mat-option *ngFor='let item of count' [value]='item'>
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="button" [disabled]='+stock === 0' class="button" mat-raised-button color='primary'
+        (click)='addToCart()'>Add to Cart</button>
+    </div>
+
+
+
+  </div>
+  <mat-divider></mat-divider>
+  <app-customers-viewed-products class="products"></app-customers-viewed-products>
+  <mat-divider></mat-divider>
+  <app-customers-bought-products class="products"></app-customers-bought-products>
+  <mat-divider></mat-divider>
+
+  <div class="description">
+    <div class="description-title">Product description</div>
+    <div class="description-content">
+      {{ product.description }}
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="information">
+    <div class="description-title">Product information</div>
+    <div class="information-row" *ngFor='let item of information'>
+      <div class="information-key"> {{ item.key }} </div>
+      <div class="information-value">{{ item.value }}</div>
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="reviews-lg">
+    <app-product-reviews [productId]='productId'></app-product-reviews>
+  </div>
+  <mat-divider></mat-divider>
+  <app-sponsored-products class="products"></app-sponsored-products>
+  <mat-divider></mat-divider>
+</div>

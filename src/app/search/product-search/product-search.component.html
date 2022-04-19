@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="first-line">
+    <div class="title">{{ products.length }} results</div>
+    <div class="sort-by">
+      <mat-form-field *ngIf='!mobile'>
+        <mat-label>Sort by</mat-label>
+        <mat-select (selectionChange)='onSort()' [(value)]='sortBy'>
+          <mat-option value='best-seller'>Best Seller</mat-option>
+          <mat-option value='new-arrival'>New Arrival</mat-option>
+          <mat-option value='price-high-to-low'>Price: High to Low</mat-option>
+          <mat-option value='price-low-to-high'>Price: Low to High</mat-option>
+          <mat-option value='rating'>Highest Rating</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="change-display">
+        <button type="button" mat-icon-button (click)="displayMode = 'list'"
+          [style.opacity]="displayMode === 'list' ? '1' : '0.5'">
+          <mat-icon>view_list</mat-icon>
+        </button>
+        <button type="button" mat-icon-button (click)="displayMode = 'grid'"
+          [style.opacity]="displayMode === 'grid' ? '1' : '0.5'">
+          <mat-icon>grid_view</mat-icon>
+        </button>
+      </div>
+      <button *ngIf='mobile' type="button" class="button" (click)='onFilterDialog()' mat-stroked-button>Sort &
+        Filter</button>
+    </div>
+  </div>
+
+  <mat-divider class="divider"></mat-divider>
+
+  <div class="content">
+    <div class="filter" *ngIf='!mobile'>
+      <app-product-filter (filter)='onFilter()'></app-product-filter>
+    </div>
+    <mat-divider *ngIf='!mobile' [vertical]='true'></mat-divider>
+    <div class="results">
+      <div *ngIf="displayMode === 'grid'" class="search-results-grid">
+        <app-product-card class="product" *ngFor='let product of products' [productId]='product.id'></app-product-card>
+      </div>
+      <div *ngIf="displayMode === 'list'" class="search-results-list">
+        <div *ngFor='let product of products'>
+
+          <app-product-list-item [productId]='product.id'></app-product-list-item>
+
+          <mat-divider class="list-divider"></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

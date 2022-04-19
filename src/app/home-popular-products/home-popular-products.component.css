@@ -1,0 +1,30 @@
+:host {
+  width: 100%;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px;
+}
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
+}
+.title {
+  font-size: medium;
+  padding: 0px 5px;
+}
+mat-divider {
+  width: 100%;
+  margin: 10px 0px;
+}
+@media (min-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

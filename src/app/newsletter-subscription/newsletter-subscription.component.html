@@ -1,0 +1,8 @@
+<div class="container">
+  <form [formGroup]='form' (ngSubmit)='onSubmit()' class="form">
+    <mat-form-field class="input">
+      <input formControlName='email' matInput type="email" placeholder="Subscribe to our News Letter">
+    </mat-form-field>
+    <button class="button" mat-flat-button color='primary' type="submit">Subscribe</button>
+  </form>
+</div>

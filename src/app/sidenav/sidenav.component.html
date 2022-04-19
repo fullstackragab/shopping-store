@@ -1,0 +1,39 @@
+<mat-nav-list>
+
+
+  <a mat-list-item (click)='onClose()' routerLink='/'>
+    <mat-icon>home</mat-icon>Home
+  </a>
+
+  <div matLine *ngIf='mainCategory === null'>
+    <div matSubheader>Main Categories</div>
+    <a mat-list-item *ngFor='let mainCategory of mainCategories' (click)='onMainCategory(mainCategory)'>
+      <div matLine>
+        {{ mainCategory.name }}
+      </div>
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </a>
+    <a mat-list-item (click)='onClose()' routerLink='/main-category/all'>See All</a>
+  </div>
+
+  <div matLine *ngIf='mainCategory !== null'>
+    <a mat-list-item (click)='mainCategory = null'>
+      <mat-icon>keyboard_arrow_left</mat-icon> Main Categories
+    </a>
+    <div matSubheader>{{ mainCategory.name }}</div>
+    <a mat-list-item *ngFor='let category of categories' (click)='onClose()'>
+      <div matLine>{{ category.name }}</div>
+    </a>
+  </div>
+
+  <div mat-subheader>Account</div>
+  <a mat-list-item (click)='onClose()' routerLink='/login'>
+    <mat-icon>login</mat-icon>Login
+  </a>
+  <a mat-list-item (click)='onClose()' routerLink='/signup'>
+    <mat-icon>account_circle</mat-icon>Sign Up
+  </a>
+  <a mat-list-item (click)='onLogout()'>
+    <mat-icon>logout</mat-icon>Logout
+  </a>
+</mat-nav-list>

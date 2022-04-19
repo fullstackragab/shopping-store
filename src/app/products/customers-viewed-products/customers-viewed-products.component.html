@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="title">Customers viewed these products</div>
+  <div class="products">
+    <app-product-card *ngFor='let product of customersViewedProducts' [productId]='product.id'></app-product-card>
+  </div>
+</div>

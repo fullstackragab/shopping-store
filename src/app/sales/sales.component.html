@@ -1,0 +1,5 @@
+<div class="container">
+  <div class="sale" *ngFor='let sale of sales; let i = index;'>
+    <img [src]='sale.imageUrl' [alt]='sale.imageUrl' [routerLink]='sale.url'>
+  </div>
+</div>

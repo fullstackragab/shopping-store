@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="title">Login</div>
+  <form class="form" [formGroup]='form' (ngSubmit)='onSubmit()'>
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput type='text' formControlName='email'>
+      <mat-error>
+        {{ form.get('email')?.hasError('required') ? 'Email is required' : ''}}
+        {{ form.get('email')?.hasError('email') ? 'Email is not valid' : ''}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName='password'>
+      <mat-error>
+        {{ form.get('password')?.hasError('minlength') ? 'Min length is 6 characters' : ''}}
+        {{ form.get('password')?.hasError('required') ? 'Password is required' : ''}}
+      </mat-error>
+    </mat-form-field>
+    <div class="rememberme">
+      <mat-checkbox formControlName='rememberme'>Remember Me</mat-checkbox>
+    </div>
+    <div class="signup">
+      <div class="create-account">
+        <button mat-button type='button' routerLink='/signup'>Sign Up</button>
+      </div>
+      <div class="forget-password">
+        <button mat-button type="button">Forget Password</button>
+      </div>
+    </div>
+
+    <div class="submit">
+      <button type="submit" [disabled]='form.invalid' color='primary' mat-raised-button>Submit</button>
+    </div>
+  </form>
+
+</div>

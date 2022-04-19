@@ -1,0 +1,67 @@
+<mat-toolbar color='primary'>
+
+  <mat-toolbar-row class="main-row">
+    <div class="container">
+
+      <div>
+
+        <button mat-icon-button type='button' (click)='onToggle()'>
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <button class='title' mat-flat-button color='primary' type='button' routerLink='/'>Shopping Store</button>
+
+      </div>
+      <div>
+        <form class='form-lg' *ngIf='!mobile' [formGroup]='form' (ngSubmit)='onSubmit()'>
+          <input type='text' class='search' (input)='onInput($event)' placeholder="Search"
+            #trigger='matAutocompleteTrigger' formControlName='search' [matAutocomplete]='auto'>
+          <mat-autocomplete #auto='matAutocomplete' (optionActivated)='onOptionActivated($event)'
+            (optionSelected)='onOptionSelected($event)'>
+            <mat-option *ngFor='let option of options' [value]='option'>{{ option }}</mat-option>
+          </mat-autocomplete>
+          <div class="icon" (click)='onSubmit()'>
+            <button mat-icon-button type="button">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </form>
+
+      </div>
+      <div class="items">
+
+
+        <button *ngIf='!mobile' mat-button type='button'>
+          <mat-icon>account_circle</mat-icon> Account
+        </button>
+        <button *ngIf='mobile' mat-icon-button type='button'>
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-icon-button type='button' routerLink='/cart'>
+          <mat-icon *ngIf="cartItemsCount === '0'">shopping_cart</mat-icon>
+          <mat-icon *ngIf="cartItemsCount !== '0'" [matBadge]='cartItemsCount' [matBadgeColor]="'accent'">shopping_cart
+          </mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="search-row" *ngIf='mobile'>
+    <div class="items full">
+      <form class='form' [formGroup]='form' (ngSubmit)='onSubmit()'>
+        <input type='text' class='search' (input)='onInput($event)' placeholder="Search"
+          #trigger='matAutocompleteTrigger' formControlName='search' [matAutocomplete]='auto'>
+        <mat-autocomplete #auto='matAutocomplete' (optionActivated)='onOptionActivated($event)'
+          (optionSelected)='onOptionSelected($event)'>
+          <mat-option *ngFor='let option of options' [value]='option'>{{ option }}</mat-option>
+        </mat-autocomplete>
+        <div class="icon" (click)='onSubmit()'>
+          <button mat-icon-button type="button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>

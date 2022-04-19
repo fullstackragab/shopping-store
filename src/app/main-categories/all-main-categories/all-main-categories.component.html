@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="main-category" *ngFor='let mainCategory of mainCategories'
+    [routerLink]="'/main-category/' + getFriendlyName(mainCategory.name)" [queryParams]="{ id: mainCategory.id }">
+    <img [src]='mainCategory.imageUrl' [alt]='mainCategory.name'>
+    <div class="name">{{ mainCategory.name }}</div>
+  </div>
+</div>

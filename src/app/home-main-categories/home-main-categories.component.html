@@ -1,0 +1,14 @@
+<div class="title">Shop by Category</div>
+<div class="main-categories">
+  <div class="main-category" *ngFor='let mainCategory of mainCategories'
+    [routerLink]="'/main-category/' + getFriendlyName(mainCategory.name)" [queryParams]="{id:mainCategory.id}">
+    <div class="image">
+      <img [src]="mainCategory.imageUrl" [alt]="mainCategory.name">
+    </div>
+    <div class="name">{{ mainCategory.name }}</div>
+  </div>
+</div>
+<div class="button-container">
+  <button type="button" class="button" mat-stroked-button color='primary' routerLink='/main-category/all'>See
+    All</button>
+</div>

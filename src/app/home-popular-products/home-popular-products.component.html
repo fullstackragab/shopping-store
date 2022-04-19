@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="title">Popular products</div>
+  <div class="products">
+    <app-product-card *ngFor='let product of popularProducts' [productId]='product.id' class="product">
+    </app-product-card>
+  </div>
+</div>

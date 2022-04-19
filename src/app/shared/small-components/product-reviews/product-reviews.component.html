@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="section-title">
+    Customer reviews
+  </div>
+  <div class="reviews">
+    <div class="review" *ngFor='let productReview of productReviews'>
+      <div class="first-line">
+        <app-product-rating [rating]='productReview.rating'></app-product-rating>
+        <div class="title">{{ productReview.title }}</div>
+      </div>
+      <div class="date">{{ productReview.reviewDate }}</div>
+      <div class="content">{{ productReview.content }}</div>
+      <div class="username">{{ productReview.username }}</div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>

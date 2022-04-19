@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.section-title {
+  font-size: medium;
+  margin: 15px 0px;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.first-line {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.title {
+  font-weight: 500;
+  line-height: 16px;
+}
+.review {
+  margin: 10px 0px;
+}
+.rating {
+  margin-bottom: -10px;
+}
+.date {
+  color: rgb(110, 110, 110);
+  font-weight: 500;
+}
+.content {
+  margin: 10px 0px;
+}
+.username {
+  color: rgb(110, 110, 110);
+  font-weight: 500;
+  margin-bottom: 10px;
+}

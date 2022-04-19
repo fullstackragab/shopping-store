@@ -1,0 +1,6 @@
+.tag {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: x-small;
+  cursor: default;
+}

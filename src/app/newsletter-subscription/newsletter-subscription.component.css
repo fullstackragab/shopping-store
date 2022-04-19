@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--primary-color-50);
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  margin: 0px 11px;
+}
+.input {
+  min-width: 240px;
+}

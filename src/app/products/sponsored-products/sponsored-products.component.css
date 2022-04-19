@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.products {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: scroll;
+  width: 100%;
+}
+.products::-webkit-scrollbar {
+  display: none;
+}
+.product {
+  min-width: 200px;
+}
+.title {
+  font-size: medium;
+  padding: 0px 5px;
+}

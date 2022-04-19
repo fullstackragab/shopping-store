@@ -1,0 +1,6 @@
+<div class="container">
+  <div class="title">Sponsored products</div>
+  <div class="products">
+    <app-product-card *ngFor='let product of sponsoredProducts' [productId]='product.id'></app-product-card>
+  </div>
+</div>

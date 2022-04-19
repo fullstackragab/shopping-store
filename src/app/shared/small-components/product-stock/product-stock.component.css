@@ -1,0 +1,6 @@
+.stock-available {
+  color: var(--accent-color);
+}
+.out-of-stock {
+  color: var(--warn-color);
+}

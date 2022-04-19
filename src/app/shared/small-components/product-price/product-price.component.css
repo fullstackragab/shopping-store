@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.list-price {
+  font-weight: lighter;
+  text-decoration: line-through;
+  margin: 0px 10px;
+}
+.discount {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline
+}

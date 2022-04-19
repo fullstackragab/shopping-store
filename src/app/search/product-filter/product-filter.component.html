@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="filter-title">
+    Brand
+  </div>
+  <div class="filter-item" *ngFor='let brand of productFilter.brands'>
+    <mat-checkbox (change)='onFilter()' [(ngModel)]='brand.checked'>{{ brand.name }}</mat-checkbox>
+  </div>
+  <mat-divider class="filter-divider"></mat-divider>
+  <div class="filter-title">
+    Price
+  </div>
+  <div class="filter-item" *ngFor='let price of productFilter.prices'>
+    <mat-checkbox (change)='onFilter()' [(ngModel)]='price.checked'>{{ price.name }}</mat-checkbox>
+  </div>
+  <mat-divider class="filter-divider"></mat-divider>
+  <div class="filter-title">
+    Color
+  </div>
+  <div class="filter-item" *ngFor='let color of productFilter.colors'>
+    <mat-checkbox (change)='onFilter()' [(ngModel)]='color.checked'>{{ color.name }}</mat-checkbox>
+  </div>
+  <mat-divider class="filter-divider"></mat-divider>
+  <div class="filter-title">
+    Condition
+  </div>
+  <div class="filter-item" *ngFor='let condition of productFilter.conditions'>
+    <mat-checkbox (change)='onFilter()' [(ngModel)]='condition.checked'>{{ condition.name }}</mat-checkbox>
+  </div>
+  <mat-divider class="filter-divider"></mat-divider>
+</div>

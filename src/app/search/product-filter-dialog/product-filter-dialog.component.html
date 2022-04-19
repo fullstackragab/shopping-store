@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="first-line">
+    <button (click)='onReset()' type="button" mat-stroked-button class="button">Reset</button>
+    <button [mat-dialog-close] type="button" mat-raised-button color='primary' class="button">Done</button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="filter-title">
+    Sort By
+  </div>
+
+  <mat-form-field>
+    <mat-label>Sort by</mat-label>
+    <mat-select (selectionChange)='onSort()' [(value)]='sortBy'>
+      <mat-option value='best-seller'>Best Seller</mat-option>
+      <mat-option value='new-arrival'>New Arrival</mat-option>
+      <mat-option value='price-high-to-low'>Price: High to Low</mat-option>
+      <mat-option value='price-low-to-high'>Price: Low to High</mat-option>
+      <mat-option value='rating'>Highest Rating</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-divider></mat-divider>
+
+  <app-product-filter></app-product-filter>
+</div>

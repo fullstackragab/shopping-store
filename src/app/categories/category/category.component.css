@@ -1,0 +1,12 @@
+.container {
+  padding: 10px;
+}
+.title {
+  font-size: large;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+}

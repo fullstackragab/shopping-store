@@ -1,0 +1,32 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav>
+    <div *ngIf='loading' class="loading-spinner">
+      <div class="spinner">
+        <mat-spinner color='primary'></mat-spinner>
+      </div>
+    </div>
+    <app-sidenav (sidenavClose)='sidenav.close()'></app-sidenav>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div #top></div>
+    <app-header (sidenavToggle)='sidenav.toggle()'></app-header>
+
+    <main>
+      <div *ngIf='loading' class="loading-spinner">
+        <div class="spinner">
+          <mat-spinner color='primary'></mat-spinner>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+
+
+      <app-newsletter-subscription></app-newsletter-subscription>
+      <app-first-footer></app-first-footer>
+      <app-second-footer></app-second-footer>
+    </main>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

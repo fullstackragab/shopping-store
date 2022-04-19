@@ -1,0 +1,22 @@
+<div class="container" *ngIf='product'>
+  <div class="top">
+    <div class="tags">
+      <app-product-best-seller *ngIf='productBestSeller'></app-product-best-seller>
+      <app-product-new class="product-new" *ngIf='productNew'></app-product-new>
+    </div>
+  </div>
+  <div class="image">
+    <img [src]='product.imageUrl' [alt]='product.name' (click)='onClick()'>
+  </div>
+  <div class="name" (click)='onClick()'>{{ product.name | limit }}
+  </div>
+  <div class="rating">
+    <app-product-rating [rating]='rating'></app-product-rating>
+  </div>
+  <div class="discount">
+    <app-product-discount [discount]='productDiscount'></app-product-discount>
+  </div>
+  <div class="price">
+    <app-product-price [listPrice]='product.price' [priceAfterDiscount]='priceAfterDiscount'></app-product-price>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.filter-item {
+  margin-left: 10px;
+}
+
+.filter-title {
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.filter-divider {
+  margin: 10px 0px;
+  width: 100%;
+}
